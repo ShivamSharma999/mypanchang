@@ -75,26 +75,19 @@ function getPanchang(targetDate, latitude, longitude, timezone) {
 
     const prevSunSign = Math.floor(sunLongPrev / 30); // Sidereal Rashi Index (0-11)
     const nextSunSign = Math.floor(sunLongNext / 30);
-
+console.log(prevSunSign, nextSunSign)
     // 5. Determine the Month names and Adhika Masa status
     // If the Sun's Rashi is the same at both the start and end of the lunar month,
     // then no Sankranti (transit) occurred, making it a leap month (Adhika Masa).
-    const isAdhika = prevSunSign === nextSunSign;
+    const isAdhika = prevSunSign == nextSunSign;
     let amantaMonth = MASA_NAMES[prevSunSign];
     
-    if (isAdhika) {
-      amantaMonth = "Adhika " + amantaMonth;
-    }
-
     // Purnimanta month starts 15 days earlier (from Krishna Paksha)
     // Hence, during Krishna Paksha, the Purnimanta month is one month ahead of Amanta.
-    let purnimantaMonth = amantaMonth;
-    if (panchanga.tithi.paksha === 'Krishna') {
-      const nextMonthSign = (prevSunSign + 1) % 12;
-      purnimantaMonth = MASA_NAMES;
-      if (isAdhika) {
-        purnimantaMonth = "Adhika " + purnimantaMonth;
-      }
+    let purnimantaMonth = MASA_NAMES[prevSunSign == 11 ? 0 : prevSunSign + 1];
+    if (isAdhika) {
+      amantaMonth = "Adhika " + amantaMonth;
+      purnimantaMonth = "Adhika" + purnimantaMonth;
     }
 
     // Assemble the complete response payload
