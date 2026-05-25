@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "@bidyashish/panchang": "^1.0.0"
-  }
+  },
   "author": "SanatanAI",
   "license": "MIT",
   "repository": {
