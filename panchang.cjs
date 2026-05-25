@@ -80,7 +80,7 @@ function getPanchang(targetDate, latitude, longitude, timezone) {
     // If the Sun's Rashi is the same at both the start and end of the lunar month,
     // then no Sankranti (transit) occurred, making it a leap month (Adhika Masa).
     const isAdhika = prevSunSign === nextSunSign;
-    let amantaMonth = MASA_NAMES;
+    let amantaMonth = MASA_NAMES[prevSunSign];
     
     if (isAdhika) {
       amantaMonth = "Adhika " + amantaMonth;
@@ -134,7 +134,7 @@ function getPanchang(targetDate, latitude, longitude, timezone) {
 // ==========================================
 // EXAMPLE EXECUTION
 // ==========================================
-const testDate = new Date("2026-06-15"); // This lands on an Adhika Masa period in 2026
+const testDate = new Date("2026-05-20"); // This lands on an Adhika Masa period in 2026
 const lat = 28.6139;  // New Delhi
 const lng = 77.2090;
 const tz = "Asia/Kolkata";
