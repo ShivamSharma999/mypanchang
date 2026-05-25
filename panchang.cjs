@@ -75,7 +75,6 @@ function getPanchang(targetDate, latitude, longitude, timezone) {
 
     const prevSunSign = Math.floor(sunLongPrev / 30); // Sidereal Rashi Index (0-11)
     const nextSunSign = Math.floor(sunLongNext / 30);
-console.log(prevSunSign, nextSunSign)
     // 5. Determine the Month names and Adhika Masa status
     // If the Sun's Rashi is the same at both the start and end of the lunar month,
     // then no Sankranti (transit) occurred, making it a leap month (Adhika Masa).
@@ -127,7 +126,7 @@ console.log(prevSunSign, nextSunSign)
 // ==========================================
 // EXAMPLE EXECUTION
 // ==========================================
-const testDate = new Date("2026-05-20"); // This lands on an Adhika Masa period in 2026
+const testDate = new Date(); // This lands on today's date
 const lat = 28.6139;  // New Delhi
 const lng = 77.2090;
 const tz = "Asia/Kolkata";
